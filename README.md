@@ -37,6 +37,32 @@ This script provides the *experimental framework* for evaluating SSRotF and comp
 
 ### 🔹 results.pdf  
 A pdf file with the results of the above experiments, for each label proportion and metric.
+
+## ⚙️ Execution Example
+```Python
+# Imports
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sslearn.model_selection import artificial_ssl_dataset
+from RotationForestSSL import RotationForestSSLClassifier
+from SSLTree import SSLTree
+
+# Load iris
+X,y = load_iris(return_X_y=True)
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Remove labels
+X_train_ssl, y_train_ssl, X_unlabeled, y_unlabeled = artificial_ssl_dataset(X_train, y_train, 0.1)
+
+# Train SSRotF
+ssrotf = RotationForestSSLClassifier(n_estimators=100, base_estimator=SSLTree(max_depth=100, w=0.85, max_features="sqrt"))
+ssrotf.fit(X_train_ssl, y_train_ssl)
+
+# Predict
+y_pred = ssrotf.predict(X_test)
+```
  
 ## 👥 Authors  
  
