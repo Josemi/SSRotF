@@ -1,10 +1,11 @@
 """
+Semi-Supervised Rotation Forest (SSRotF)
 Author: José Miguel Ramírez-Sanz and Álvar Arnaiz-González
 Idea: José Miguel Ramírez-Sanz, David Martínez-Acha, Álvar Arnaiz-González, César García-Osorio and Juan José Rodríguez
 Email: jmrsanz@ubu.es
 
 
-Rotation Forest modifications made by José Luis Garrido-Labrador
+Based on the implementation of the original Rotation Forest modifications made by José Luis Garrido-Labrador
 Implementation based on:
 https://github.com/alan-turing-institute/sktime/blob/cc91ba9591aa88cba3874365782951745cd5ad6d/sktime/classification/sklearn/_rotation_forest.py
 """
