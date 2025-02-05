@@ -14,6 +14,7 @@ def limit_memory(bytes):
 limit_memory(475*(2**30))
 
 from sslearn.wrapper import SelfTraining
+from sslearn.wrapper import TriTraining
 from sslearn.model_selection import artificial_ssl_dataset
 
 from sklearn.model_selection import StratifiedKFold
@@ -26,10 +27,6 @@ from SSLTree import SSLTree
 from rotation import RotationForestClassifier
 from RotationForestSSL import RotationForestSSLClassifier
 from RandomForestSSL import RandomForestSSL
-
-
-import warnings
-warnings.filterwarnings("ignore")
 
 #Configuration
 REP = 5
@@ -47,7 +44,8 @@ ssl_models = {"RFSSLTree": RandomForestSSL(n_estimators=100, estimator=SSLTree(m
               "SelfTraining(RotF)" : SelfTraining(base_estimator=RotationForestClassifier(n_estimators=100, random_state=RANDOM_STATE)),
               "SelfTraining(DT)" : SelfTraining(base_estimator=DecisionTreeClassifier(random_state=RANDOM_STATE)),
               "SelfTraining(RF)" : SelfTraining(base_estimator=RandomForestClassifier(n_estimators=100, random_state=RANDOM_STATE))
-              }
+              "TriTrainingRotF":TriTraining(base_estimator=RotationForestClassifier(n_estimators=33, random_state=RANDOM_STATE),        random_state=RANDOM_STATE),  
+              "TriTrainingRF":TriTraining(base_estimator=RandomForestClassifier(n_estimators=33, random_state=RANDOM_STATE),random_state=RANDOM_STATE)}
 
 #SL models
 sl_models = {"DT": DecisionTreeClassifier(random_state=RANDOM_STATE),
@@ -71,6 +69,7 @@ SAVE = ["DATA", "REP","KFOLD","MODEL","LP","ACC", "Gmacro", "Fmacro","MCC"]
 
 datasets = utils.load_uci_datasets(uci_type)
 
+#Final results file
 RESULTS_FILE = ""
 
 print("Experiment with data: ", uci_type, " with " + str(REP) + " repetitions and " + str(KFOLD) + " folds", flush=True)
@@ -101,7 +100,7 @@ def job(r, k, lp, X_train_ssl, y_train_ssl, X_test, y_test, ssl_m, sl_m, dataset
         del model
 
     res = pd.DataFrame(res, columns = SAVE)
-    res.to_csv("Results/UCI/UCI_v2/aux/aux_"+ dataset + "_" + str(lp) + "_" + str(r) + "_" + str(k) + ".csv", index=False)
+    res.to_csv("Results/aux_"+ dataset + "_" + str(lp) + "_" + str(r) + "_" + str(k) + ".csv", index=False)
     del res
     del X_train_supervised
     del y_train_supervised
@@ -141,9 +140,7 @@ for r in range(REP):
                     base_X.append(X_train.loc[aux_y].values[0])
                     index.append(aux_y[0])
 
-                #X_train = X_train.drop(index)
                 X_train.reset_index()
-                #y_train = y_train.drop(index)
                 y_train.reset_index()
 
                 #SSL data
