@@ -1,4 +1,4 @@
-# 🌳 Semi-Supervised Rotation Forest 🌳  
+# 🌳👀 Semi-Supervised Rotation Forest 🌳👀
  
 Rotation Forest (RotF) is a popular tree-based ensemble method that has gained a deserved fame in the machine learning community. Its effectiveness is based on the rotation of the data before the base estimators training. This process increases the diversity of the ensemble, which in turn improves its generalization capabilities. Rotation Forest is a supervised learning (SL) method that should be trained with a sufficient number of labeled instances, in order to obtain a robust model.
  
