@@ -36,7 +36,10 @@ This script provides the *experimental framework* for evaluating SSRotF and comp
 - The utilities used throughout the script (*utils* package) must be requested, as they include code used in multiple other experiments and are considered for private use. The utils package is primarily used for data collection and handling datasets (p.e, metrics calculation).
 
 ### 🔹 results.pdf  
-A pdf file with the results of the above experiments, for each label proportion and metric.
+A PDF file with the results of the above experiments, for each label proportion and metric.
+
+### 🔹 results.csv  
+A CSV file with the results of the above experiments, for each label proportion and metric.
 
 ## ⚙️ Execution Example
 ```Python
