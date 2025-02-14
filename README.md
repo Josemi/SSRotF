@@ -1,6 +1,7 @@
 # 🌳👀 Semi-Supervised Rotation Forest 🌳👀
  
-Rotation Forest (RotF) is a popular tree-based ensemble method that has gained a deserved fame in the machine learning community. Its effectiveness is based on the rotation of the data before the base estimators training. This process increases the diversity of the ensemble, which in turn improves its generalization capabilities. Rotation Forest is a supervised learning (SL) method that should be trained with a sufficient number of labeled instances, in order to obtain a robust model.
+Rotation Forest (RotF) is a popular tree-based ensemble method that has gained a deserved fame in the machine learning community.  key aspect of its design is the transformation of the feature space through rotation before training
+the base learners. This process increases the diversity of the ensemble, which in turn improves its generalization capabilities. Rotation Forest is a supervised learning (SL) method that should be trained with a sufficient number of labeled instances, in order to obtain a robust model.
  
 > Rodríguez, J. J., Kuncheva, L. I., & Alonso, C. J. (2006). Rotation forest: A new classifier ensemble method. IEEE Transactions on Pattern Analysis and Machine Intelligence, 28(10), 1619–1630. [IEEE](https://doi.org/10.1109/TPAMI.2006.211).
  
@@ -10,7 +11,11 @@ This paper presents a semi-supervised version of the ensemble method Rotation Fo
  
 ## 🔬 Experimentation  
  
-In order to demonstrate the performance of the proposed method and to extend the experimentation, tests were conducted using 54 different UCI datasets. This experimentation also includes a meta-learning analysis in which 16 datasets were selected, for which the good results obtained lead us to believe that they verify some assumptions of the semi-supervised learning, making them more suitable for this and future experimentation. This experimentation demonstrates the capabilities of Rotation Forest, even in situations with few labeled instances, and highlights the improvement of the proposed semi-supervised version.  
+In order to demonstrate the performance of the proposed method, an extensive experiment was conducted using 54 different UCI datasets. A subset of 16 datasets was identified where the proposed method performs exceptionally, hinting at alignment of these datasets with SSL assumptions.
+
+A meta-learning analysis showed that only four meta-feature metrics are enough to distinguish these cases, suggesting that meta-learning could play a role in predicting dataset suitability for SSL. 
+
+This experimentation demonstrates the RotF capabilities, even in situations with few labeled instances, and highlights the improvement of the proposed semi-supervised version.
  
 ## 📂 Repository Structure  
  
