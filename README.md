@@ -49,8 +49,7 @@ This script provides the *experimental framework* for evaluating SSRotF and comp
 Utils file with the implementation of functions for loading data and saving results. Note: The path to the UCI data must be set in this file.
 
 ### 🔹 requirements.txt
-Requirements to run the experiments.
-For These are the requirements needed to run the experiments. They are not the requirements for the proposed method. To run the original Rotation Forest, you need the implementation from [Admirable-Methods](https://github.com/jlgarridol/admirable-methods/blob/master/ubulearn/rotation.py) repository.
+These are the requirements needed to run the experiments. They are not the requirements for the proposed method. To run the original Rotation Forest, you need the implementation from [Admirable-Methods](https://github.com/jlgarridol/admirable-methods/blob/master/ubulearn/rotation.py) repository.
 
 ### 🔹 results.pdf  
 A PDF file with the results of the above experiments, for each label proportion and metric.
