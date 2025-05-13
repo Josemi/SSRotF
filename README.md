@@ -16,6 +16,11 @@ In order to demonstrate the performance of the proposed method, an extensive exp
 A meta-learning analysis showed that only four meta-feature metrics are enough to distinguish these cases, suggesting that meta-learning could play a role in predicting dataset suitability for SSL. 
 
 This experimentation demonstrates the RotF capabilities, even in situations with few labeled instances, and highlights the improvement of the proposed semi-supervised version.
+
+### Experiments launch example:
+```Bash
+python experiments.py
+```
  
 ## 📂 Repository Structure  
  
@@ -39,6 +44,13 @@ This script provides the *experimental framework* for evaluating SSRotF and comp
 - *Cross-validation with repetition* → Each experiment runs multiple repetitions, and within each repetition, cross-validation is applied. This ensures robust evaluation by reducing the impact of randomness. 
 - The experiments are executed by repetition, within each repetition by dataset, within each dataset by fold, and within each fold by label proportion. Each of these configurations is stored and then executed using a pool of jobs in multiprocessing.
 - The utilities used throughout the script (*utils* package) must be requested, as they include code used in multiple other experiments and are considered for private use. The utils package is primarily used for data collection and handling datasets (p.e, metrics calculation).
+
+### 🔹 utils.py
+Utils file with the implementation of functions for loading data and saving results. Note: The path to the UCI data must be set in this file.
+
+### 🔹 requirements.txt
+Requirements to run the experiments.
+For These are the requirements needed to run the experiments. They are not the requirements for the proposed method. To run the original Rotation Forest, you need the implementation from [Admirable-Methods](https://github.com/jlgarridol/admirable-methods/blob/master/ubulearn/rotation.py) repository.
 
 ### 🔹 results.pdf  
 A PDF file with the results of the above experiments, for each label proportion and metric.
