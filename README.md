@@ -21,6 +21,13 @@ This experimentation demonstrates the RotF capabilities, even in situations with
 ```Bash
 python experiments.py
 ```
+### ⚠️ Disclaimer 
+These experiments have been launched on a high-performance computer server with the following specifications:  
+- *CPU:* AMD EPYC 7642 (192) @ 2.300 GHz
+- *RAM:* 512 GB
+- *SO:* Rocky Linux 9.4 “Blue Onyx”
+
+
  
 ## 📂 Repository Structure  
  
