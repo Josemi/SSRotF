@@ -66,7 +66,7 @@ def load_uci_datasets(uci_type):
     """Get datasets from files.
     Parameters
     ----------
-    data_it : collection
+    uci_type : collection
         List of datasets to load.
     Returns
     -------
