@@ -164,7 +164,7 @@ for r in range(REP):
     for dataset in datasets:
         for k in range(KFOLD):
             for lp in label_prop:
-                pd_aux = pd.read_csv("")
+                pd_aux = pd.read_csv("Results/aux_"+ dataset + "_" + str(lp) + "_" + str(r) + "_" + str(k) + ".csv", index=False)
                 df_res = pd.concat([df_res, pd_aux])
 
 df_res.to_csv(RESULTS_FILE, index=False)
