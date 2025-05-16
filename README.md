@@ -17,7 +17,11 @@ A meta-learning analysis showed that only four meta-feature metrics are enough t
 
 This experimentation demonstrates the RotF capabilities, even in situations with few labeled instances, and highlights the improvement of the proposed semi-supervised version.
 
+
 ### Experiments launch example:
+
+The experiments are designed to be run in folds of UCI datasets to avoid overloading the computing server. To launch the experiments, specify the name of the subfolder containing the subset of UCI datasets to be used in the uci_type variable in the experiments.py file.
+
 ```Bash
 python experiments.py
 ```
