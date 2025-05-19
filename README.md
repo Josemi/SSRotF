@@ -48,6 +48,9 @@ Unlike standard decision trees, *SSLTree incorporates unlabeled instances during
  
 This method is based on the impurity calculation described in:
 > Levatić, J., Ceci, M., Kocev, D., & Džeroski, S. (2017). Semi-supervised classification trees. Journal of Intelligent Information Systems, 49, 461–486. [Springer](https://doi.org/10.1007/s10844-017-0457-4).  
+
+### 🔹 RandomForestSSL.py 
+Implementation of a semi-supervised Random Forest with SSLTree.
  
 ### 🔹 experiments.py  
 This script provides the *experimental framework* for evaluating SSRotF and comparing it with other models:
