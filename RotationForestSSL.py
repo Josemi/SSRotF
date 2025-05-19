@@ -116,6 +116,8 @@ class RotationTransformerSSL(TransformerMixin):
         return X_t
 
     def _generate_pcas(self, X_cls_split, groups, rng):
+        #TODO: AÑADIR TAMBN LAS NO ETIQUETADAS CERCANAS A LOS DATOS DE ESTAS RANDOM SUBCLASSES
+        #VERSION: 1.1.B - 1.2.B - 2.B
         pcas = []
         for group in groups:
             classes = rng.choice(
@@ -132,7 +134,8 @@ class RotationTransformerSSL(TransformerMixin):
             for classe in self.classes_:
                 centroids[classe] = np.mean(X_cls_split_group[classe], axis=0)
 
-            #Calculate pseudo-labels for X_unlabeled based on distance to centroids, can be taken out of the loop
+            #Calculate pseudo-labels for X_unlabeled based on distance to centroids
+            # SE PODRÍA SACAR Y HACERLO SOBRE GROUPS PARA CALCULARLO SOLO UNA VEZ Y NO SOLO SOBRE LAS CLASES QUE SE MIRAN
             pseudo_y = []
             for xu in X_cls_split_group[-1]:
                 min_dis = float('inf')
@@ -459,6 +462,7 @@ class RotationForestSSL(BaseEstimator):
         self.random_state = random_state
         self.n_jobs = n_jobs
 
+    #TODO: MODIFICAR PARA PASARLE A LAS TRANSFORMACIONES Y A LOS ARBOLES LAS NO ETIQUETADAS
     def fit(self, X, y,**kwards):
         rs = check_random_state(self.random_state)
         X, y = check_X_y(X, y)
@@ -490,8 +494,8 @@ class RotationForestSSL(BaseEstimator):
         X = X[:, self._useful_atts]
         # Normalize attributes
         self._min = X.min(axis=0)
-        self._ptp = X.max(axis=0) - self._min
-        X = (X - self._min) / self._ptp
+        self._ptp = np.subtract(X.max(axis=0),self._min, dtype=np.float32)
+        X = np.subtract(X,self._min, dtype=np.float32) / self._ptp
 
         self.n_jobs_ = min(effective_n_jobs(self.n_jobs), self.n_estimators)
         self.trees_ = Parallel(n_jobs=self.n_jobs_)(
@@ -536,7 +540,7 @@ class RotationForestSSL(BaseEstimator):
     def predict_proba(self, X):
         X = check_array(X)
         X = X[:, self._useful_atts]
-        X = (X - self._min) / self._ptp
+        X = np.subtract(X,self._min, dtype=np.float32) / self._ptp
 
         y_probas = Parallel(n_jobs=self.n_jobs_)(
             delayed(self._predict_proba_for_estimator)(
@@ -573,6 +577,7 @@ class RotationForestSSL(BaseEstimator):
 
 
 class RotationForestSSLClassifier(RotationForestSSL, ClassifierMixin):
+    #TODO: MODIFICAR EL DECISION TREE PARA QUE SE DIVIDA TENIENDO EN CUENTA LAS NO ETIQUETADAS
     def __init__(self, base_estimator=SSLTree(max_depth=100), n_estimators=100, min_group=3, max_group=3, remove_proportion=0.5, remove_proportion_ssl=0.9, random_state=None, n_jobs=None):
         super(RotationForestSSLClassifier, self).__init__(
             base_estimator=base_estimator,
@@ -586,7 +591,7 @@ class RotationForestSSLClassifier(RotationForestSSL, ClassifierMixin):
         )
         self._estimator_type = "classifier"
 
-
+    #TODO: MODIFICAR PARA PASARLE A LAS TRANSFORMACIONES Y A LOS ARBOLES LAS NO ETIQUETADAS
     def fit(self, X, y, **kwards):
         super(RotationForestSSLClassifier, self).fit(X, y, **kwards)
         #self.classes_ = np.unique(y)
