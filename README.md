@@ -74,11 +74,20 @@ A CSV file with the results of the above experiments, for each label proportion 
 ## ⚙️ Execution Example
 ```Python
 # Imports
+# Imports
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sslearn.model_selection import artificial_ssl_dataset
 from RotationForestSSL import RotationForestSSLClassifier
 from SSLTree import SSLTree
+
+# Comparison method
+from sslearn.wrapper import TriTraining
+from rotation import RotationForestClassifier
+
+# Metric
+from sklearn.metrics import accuracy_score
+
 
 # Load iris
 X,y = load_iris(return_X_y=True)
@@ -93,8 +102,17 @@ X_train_ssl, y_train_ssl, X_unlabeled, y_unlabeled = artificial_ssl_dataset(X_tr
 ssrotf = RotationForestSSLClassifier(n_estimators=100, base_estimator=SSLTree(max_depth=100, w=0.85, max_features="sqrt"))
 ssrotf.fit(X_train_ssl, y_train_ssl)
 
+# Train comparison method
+trirotf = TriTraining(base_estimator=RotationForestClassifier(n_estimators=33,))
+trirotf.fit(X_train_ssl, y_train_ssl)
+
 # Predict
-y_pred = ssrotf.predict(X_test)
+y_pred_ssrotf = ssrotf.predict(X_test)
+y_pred_trirotf = trirotf.predict(X_test)
+
+# Evaluate
+print("SSRotF: " + str(accuracy_score(y_test, y_pred_ssrotf)))
+print("Tri(RotF): " + str(accuracy_score(y_test, y_pred_trirotf)))
 ```
  
 ## 👥 Authors  
