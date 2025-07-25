@@ -74,7 +74,6 @@ A CSV file with the results of the above experiments, for each label proportion 
 ## ⚙️ Execution Example
 ```Python
 # Imports
-# Imports
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sslearn.model_selection import artificial_ssl_dataset
