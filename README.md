@@ -51,6 +51,9 @@ This method is based on the impurity calculation described in:
 
 ### 🔹 RandomForestSSL.py 
 Implementation of a semi-supervised Random Forest with SSLTree.
+
+### 🔹 rotation.py 
+Implementation of supervised Rotation Forest from [Admirable-Methods](https://github.com/jlgarridol/admirable-methods/blob/master/ubulearn/rotation.py) repository.
  
 ### 🔹 experiments.py  
 This script provides the *experimental framework* for evaluating SSRotF and comparing it with other models:
@@ -63,7 +66,7 @@ This script provides the *experimental framework* for evaluating SSRotF and comp
 Utils file with the implementation of functions for loading data and saving results. Note: The path to the UCI data must be set in this file.
 
 ### 🔹 requirements.txt
-These are the requirements needed to run the experiments. They are not the requirements for the proposed method. To run the original Rotation Forest, you need the implementation from [Admirable-Methods](https://github.com/jlgarridol/admirable-methods/blob/master/ubulearn/rotation.py) repository.
+These are the requirements needed to run the experiments. They are not the requirements for the proposed method.
 
 ### 🔹 results.pdf  
 A PDF file with the results of the above experiments, for each label proportion and metric.
