@@ -8,7 +8,38 @@ the base learners. This process increases the diversity of the ensemble, which i
 The field of machine learning has witnessed a surge of development over the last decades, with the proliferation of novel techniques such as semi-supervised learning (SSL). SSL lies between supervised and unsupervised learning. It allows the solution of classification and regression problems characteristic of supervised learning, while also allowing for the acquisition of information from unlabeled instances.  
  
 This paper presents a semi-supervised version of the ensemble method Rotation Forest for tabular data, called Semi-Supervised Rotation Forest (SSRotF). This semi-supervised version includes two main modifications that allow Rotation Forest to use unlabeled data, thereby improving its performance.  
+
+## 🧩 Installation
  
+To install the library and verify that all dependencies are correctly set up, you can use our automated installation script:
+ 
+1. Download the installation script:
+```bash
+   wget https://github.com/Josemi/SSRotF/raw/refs/heads/main/run_example.sh
+```
+   Or using curl:
+```bash
+   curl -O https://github.com/Josemi/SSRotF/raw/refs/heads/main/run_example.sh
+```
+ 
+2. Make the script executable:
+```bash
+   chmod +x run_example.sh
+```
+ 
+3. Run the script:
+```bash
+   ./run_example.sh
+```
+ 
+The script will:
+- Clone the repository
+- Create a conda environment with Python 3.10.13
+- Install all required dependencies
+- Run a minimal example to verify the installation
+ 
+**Note:** The example script included is designed solely to verify that the installation is working correctly. It is not intended as a performance benchmark. For comprehensive experimental results and proper usage examples, please refer to the paper and the scripts in the `experiments/` directory.
+
 ## 🔬 Experimentation  
  
 In order to demonstrate the performance of the proposed method, an extensive experiment was conducted using 54 different UCI datasets. A subset of 16 datasets was identified where the proposed method performs exceptionally, hinting at alignment of these datasets with SSL assumptions.
@@ -74,7 +105,13 @@ A PDF file with the results of the above experiments, for each label proportion 
 ### 🔹 results.csv  
 A CSV file with the results of the above experiments, for each label proportion and metric.
 
-## ⚙️ Execution Example
+### 🔹 example.py
+Test script for installation verification.
+
+### 🔹 run_example.sh 
+Bash script that installs dependencies and runs the example to verify installation.
+
+## ⚙️ Execution Example (example.py)
 ```Python
 # Imports
 from sklearn.datasets import load_iris
