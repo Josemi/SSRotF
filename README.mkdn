@@ -11,7 +11,7 @@ This paper presents a semi-supervised version of the ensemble method Rotation Fo
 
 ## 🧩 Installation
  
-To install the library and verify that all dependencies are correctly set up, you can use our automated installation script:
+To install the library and verify that all dependencies are correctly set up, you can use our automated installation script (take into account that [conda](https://docs.conda.io/projects/conda/en/stable/user-guide/install/index.html) must be installed):
  
 1. Download the installation script:
 ```bash
