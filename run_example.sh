@@ -1,24 +1,4 @@
 #!/bin/bash
-"""
-Minimal Installation Verification Example
- 
-This script provides a simple working example to verify that all dependencies 
-are correctly installed and that the Semi-Supervised Rotation Forest library 
-is functioning properly.
- 
-IMPORTANT: This is NOT intended as a performance benchmark or demonstration of 
-the method's effectiveness. The dataset used here is deliberately minimal and 
-may not represent scenarios where Semi-Supervised Rotation Forest excels.
- 
-For comprehensive performance comparisons and proper experimental setup, 
-please refer to the experiments described in the paper and the full 
-experimental scripts in experiments.py.
- 
-Purpose:
-- Verify successful installation of all required packages
-- Confirm basic functionality of the library
-- Provide a quick sanity check that the code runs without errors
-"""
 
 # Display what will be executed
 echo "=============================================="
